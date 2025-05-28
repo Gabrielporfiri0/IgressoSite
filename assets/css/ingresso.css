@@ -1,0 +1,221 @@
+:root {
+  --bg-main: #1a1a1a;
+  --bg-secondary: #2c2c2c;
+  --text-light: #f2f2f2;
+  --text-muted: #cccccc;
+  --highlight: #e50914;
+  --highlight-hover: #ff9800;
+  --border: #444;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-main);
+  color: var(--text-light);
+  font-family: 'Arial', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  display: flex;
+  min-height: 100vh;
+  padding: 20px;
+  gap: 40px;
+}
+
+.resumo-compra {
+  width: 280px;
+  background-color: var(--bg-secondary);
+  padding: 20px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.resumo-compra h2 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.filme-info {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.filme-info img {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 2px solid var(--highlight);
+}
+
+.filme-info p {
+  margin: 4px 0;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.filme-info p span {
+  background: var(--highlight);
+  padding: 3px 6px;
+  border-radius: 4px;
+  margin-right: 6px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  vertical-align: middle;
+}
+
+.selecao-assentos {
+  flex-grow: 1;
+}
+
+.selecao-assentos h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.mapa-assentos {
+  background-color: var(--bg-secondary);
+  border-radius: 8px;
+  padding: 15px;
+  display: grid;
+  gap: 6px;
+  user-select: none;
+}
+
+.linha {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.assento {
+  width: 22px;
+  height: 22px;
+  background-color: var(--bg-main);
+  border: 1.5px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.assento:hover:not(.indisponivel):not(.selecionado) {
+  border-color: var(--highlight-hover);
+  background-color: var(--highlight-hover);
+}
+
+.assento.selecionado {
+  background-color: var(--highlight);
+  border-color: var(--highlight);
+  cursor: pointer;
+}
+
+.assento.indisponivel {
+  background-color: #444;
+  cursor: not-allowed;
+  border-color: #333;
+}
+
+.legenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  justify-content: center;
+}
+
+.legenda > div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legenda .assento,
+.legenda .d-box,
+.legenda .deficiente,
+.legenda .acompanhante,
+.legenda .mobilidade,
+.legenda .cao-guia {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 1.5px solid var(--border);
+  background-color: var(--bg-main);
+  text-align: center;
+  line-height: 20px;
+  font-weight: bold;
+  font-size: 14px;
+  color: var(--text-light);
+}
+
+.legenda .assento.indisponivel {
+  background-color: #444;
+  border-color: #333;
+}
+
+.legenda .assento.selecionado {
+  background-color: var(--highlight);
+  border-color: var(--highlight);
+}
+
+.legenda .d-box {
+  background-color: #252525;
+  border-color: #999;
+}
+
+.legenda .deficiente {
+  background-color: #555;
+  border-color: #999;
+}
+
+.legenda .acompanhante {
+  background-color: #888;
+  border-color: #bbb;
+}
+
+.legenda .mobilidade {
+  background-color: #aaa;
+  border-color: #ccc;
+}
+
+.legenda .cao-guia {
+  background-color: var(--highlight);
+  color: #000;
+  font-weight: 700;
+  border-color: var(--highlight);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 0.8rem;
+}
+
+.tela {
+  margin-top: 30px;
+  text-align: center;
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 700px) {
+  main {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .resumo-compra {
+    width: 100%;
+  }
+}

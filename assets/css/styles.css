@@ -164,6 +164,7 @@
     padding: 2%;
     margin: 0 auto;
     margin-top: 200px;
+    border-radius: 4px;
     
   }
 
@@ -198,7 +199,14 @@
     transition: background-color 0.3s;
   }
 
-  .cartazfilme img{
-    width: 20%;
-    border-radius: 4px;
-  }
+ .cartazfilme img {
+  width: 20%;
+  border-radius: 4px;
+  transition: transform 0.3s ease; 
+}
+
+.cartazfilme img:hover {
+  transform: scale(1.1); 
+}
+ 
+  
