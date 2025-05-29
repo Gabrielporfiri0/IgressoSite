@@ -28,6 +28,35 @@ main {
   gap: 40px;
 }
 
+header {
+    background-color: var(--bg-secondary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--border);
+  }
+  
+  header h1 {
+    color: var(--highlight);
+  }
+
+   nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  nav a:hover {
+    color: var(--highlight-hover);
+  }
+
 .resumo-compra {
   width: 280px;
   background-color: var(--bg-secondary);
@@ -219,3 +248,12 @@ main {
     width: 100%;
   }
 }
+
+ footer {
+    background-color: var(--bg-secondary);
+    color: var(--text-muted);
+    text-align: center;
+    padding: 20px;
+    border-top: 2px solid var(--border);
+    padding-top: 0;
+  }
