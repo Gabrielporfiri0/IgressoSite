@@ -33,3 +33,68 @@ document.addEventListener("DOMContentLoaded", () => {
     }, intervalTime);
   });
   
+ 
+
+document.addEventListener("DOMContentLoaded", () => {
+  const assentos = document.querySelectorAll(".assento:not(.indisponivel)");
+  const listaAssentos = document.getElementById("assentos-selecionados");
+  const valorTotal = document.getElementById("valor-total");
+  const confirmarBtn = document.getElementById("confirmar-compra");
+
+  let assentosSelecionados = [];
+  const precoIngresso = 20.0;
+
+  assentos.forEach((assento) => {
+    assento.addEventListener("click", () => {
+      const nome = assento.getAttribute("aria-label");
+
+      if (assento.classList.contains("selecionado")) {
+        assento.classList.remove("selecionado");
+        assentosSelecionados = assentosSelecionados.filter((a) => a !== nome);
+      } else {
+        assento.classList.add("selecionado");
+        assentosSelecionados.push(nome);
+      }
+
+      atualizarResumo();
+    });
+  });
+
+  function atualizarResumo() {
+  const resumoSelecionados = document.getElementById("resumo-selecionados");
+
+  if (assentosSelecionados.length === 0) {
+    listaAssentos.textContent = "Nenhum assento selecionado";
+    valorTotal.textContent = "0,00";
+  } else {
+    listaAssentos.textContent = assentosSelecionados.join(", ");
+    valorTotal.textContent = (assentosSelecionados.length * precoIngresso)
+      .toFixed(2)
+      .replace(".", ",");
+  }
+
+  resumoSelecionados.textContent = `Assentos selecionados: ${assentosSelecionados.length}`;
+}
+
+
+  confirmarBtn.addEventListener("click", () => {
+    if (assentosSelecionados.length === 0) {
+      alert("Selecione pelo menos um assento antes de confirmar.");
+      return;
+    }
+
+    alert(
+      `Compra confirmada!\nAssentos: ${assentosSelecionados.join(", ")}\nTotal: R$ ${(
+        assentosSelecionados.length * precoIngresso
+      )
+        .toFixed(2)
+        .replace(".", ",")}`
+    );
+
+    // Simulação de reset
+    assentos.forEach((a) => a.classList.remove("selecionado"));
+    assentosSelecionados = [];
+    atualizarResumo();
+  });
+});
+
